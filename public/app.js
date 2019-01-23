@@ -2,14 +2,27 @@ $(document).on("click", ".scrape", function() {
     
 
     $.ajax({
-        method: "GET",
+        method: "post",
         url: "/scrape"
-    }) .then(function(data) {
-            console.log(data)
-    })
+    }) .then(function(data) {})
 
-  });
-/*
+    $.ajax({
+      method:"get",
+      url:"/scrape"
+    }).then(function(result){
+      //console.log(result)
+
+      $(".article-container").empty()
+      result.forEach((element,index) => $(".article-container").append("<a href = https://www.nytimes.com"+element.link+ "><h3>" +element.title+"</h3></a><br>"))
+
+    })
+    
+  })
+
+  /*
+
+            //console.log("DATA:"+data.length)
+  
   $(document).on("click", "p", function() {
     // Empty the notes from the note section
     $("#notes").empty();
