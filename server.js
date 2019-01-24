@@ -80,7 +80,13 @@ axios.get("https://www.nytimes.com/section/science").then(function(response) {
       Article.find({}, function(err, dbArticle){
         res.send(dbArticle)
       })
-  
+    })
+
+    app.delete("/", function(req, res){
+      Article.remove({}, function(err, dbArticle){
+        res.send(dbArticle)
+      })
+
     })
 
     // Start the server
